@@ -55,7 +55,6 @@ jobs:
               echo "COMPARE_URL= $( echo '${{github.event.repository.html_url}}/compare/${{github.event.pull_request.base.sha}}...${{ github.event.pull_request.merge_commit_sha}}' )" >> $GITHUB_ENV      
               echo "FILES_CHANGED=$(echo '${{github.event.pull_request._links.html.href}}/files' )" >> $GITHUB_ENV
               echo $LOG
-              merge_commit_sha
               echo "MERGE_LOG= $(git show ${{github.event.pull_request.merge_commit_sha}}) " >> $GITHUB_ENV
       - name: checkout
         uses: actions/checkout@v3
@@ -80,19 +79,19 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
            # Required mail server address if not connection_url:
-           server_address: ${{secrets.SMTP_PROVIDER}}
+           server_address: smtp.gmail.com
            server_port: 465
            # Optional whether this connection use TLS (default is true if server_port is 465)
            secure: true
            # Optional (recommended): mail server username:
-           username:  ${{secrets.MAIL_USERNAME}} 
+           username:  chapelhpc@gmail.com
            # Optional (recommended) mail server password:
-           password: ${{secrets.MAIL_PASSWORD}}
+           password: $4LS|J8F,eu|^j=z
            # Required mail subject:
            subject: Test merge message "[Chapel Merge] ${{github.event.pull_request.title}}"
            # Required recipients' addresses:
            #to: chapel+commits@discoursemail.com
-           to: Bhavani@hpe.com
+           to: Bhavani@hpe.com 
            # Required sender full name (address can be skipped):
            from:  ${{env.AUTHOR}}
            body: |
