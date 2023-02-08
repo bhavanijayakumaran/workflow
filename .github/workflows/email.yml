@@ -97,14 +97,14 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
            # Required mail server address if not connection_url:
-           server_address: smtp.gmail.com
+           server_address: ${{secrets.SERVER}}
            server_port: 465
            # Optional whether this connection use TLS (default is true if server_port is 465)
            secure: true
            # Optional (recommended): mail server username:
-           username:  chapelhpc@gmail.com 
+           username:  ${{secrets.EMAIL}}
            # Optional (recommended) mail server password:
-           password: zdochkqdfehdtiek
+           password: ${{secrets.PWD}}
            # Required mail subject:
            subject: "TESTING -- IGNORE plain body + merge log changes [Chapel Merge] ${{github.event.pull_request.title}}"
            # Required recipients' addresses:
