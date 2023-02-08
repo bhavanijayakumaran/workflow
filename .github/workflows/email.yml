@@ -54,7 +54,7 @@ jobs:
         uses: actions/checkout@v3
         # To get git diff on the files that were changed in the PR checkout with fetch-depth 2.
         with:
-          fetch-depth: 0 
+          fetch-depth: 100
       - name: Get merge log
         id: merge-log
         env:
