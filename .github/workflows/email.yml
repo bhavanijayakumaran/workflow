@@ -111,7 +111,7 @@ jobs:
            subject: "TESTING -- IGNORE plain body + merge log changes [Chapel Merge] ${{github.event.pull_request.title}}"
            # Required recipients' addresses:
            #to: chapel+commits@discoursemail.com
-           to: chapel+staff@discoursemail.com  
+           to: bhavani@hpe.com 
            # Required sender full name (address can be skipped):
            from:  ${{env.AUTHOR}}
            body: |
@@ -125,12 +125,7 @@ jobs:
                           
               Compare: ${{env.COMPARE_URL}} 
               Diff: ${{github.event.pull_request.diff_url}}
-              # Modified Files: 
-              #      ${{env.MODIFIED}} 
-              # Added Files:
-              #      ${{env.ADDED}} 
-              # Removed Files:   
-              #      ${{env.DELETED}} 
+           
 
            # Optional converting Markdown to HTML (set content_type to text/html too):
            convert_markdown: false
