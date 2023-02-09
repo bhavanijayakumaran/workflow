@@ -74,35 +74,6 @@ jobs:
               echo 'DIFF<<EOF' >> $GITHUB_ENV
               echo "$diff" >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
-      # - name: Get changed files
-      #   id: changed-files
-      #   uses: tj-actions/changed-files@v34
-      #   with:
-      #     separator: "," 
-      # # tj-actions' limitation prevents the user from using "\n" as output seperator.
-      # # Solution: parse the list of changed files and replace each comma delimiter with a <br>.   
-      # - name: Parse changed files
-      #   id: parsed-output
-      #   run: |      
-      #         modified="$(echo  ${{steps.changed-files.outputs.modified_files}} |  sed -e $'s/\,/\\n/g' )"
-      #           echo "$modified" 
-      #           echo 'MODIFIED<<EOF' >> $GITHUB_ENV
-      #           echo "$modified" >> $GITHUB_ENV
-      #           echo 'EOF' >> $GITHUB_ENV
-
-      #           added='$(echo  ${{steps.changed-files.outputs.added_files}} |  sed -e $'s/\,/\\n/g' )'
-      #           echo "$added" 
-      #           echo 'ADDED<<EOF' >> $GITHUB_ENV
-      #           echo "$ADDED" >> $GITHUB_ENV
-      #           echo 'EOF' >> $GITHUB_ENV
-
-      #           deleted=$(echo  ${{steps.changed-files.outputs.deleted_files}} |  sed -e $'s/\,/\\n/g' )
-      #           echo "$deleted" 
-      #           echo 'DELETED<<EOF' >> $GITHUB_ENV
-      #           echo "$deleted" >> $GITHUB_ENV
-      #           echo 'EOF' >> $GITHUB_ENV
- 
-
       - name: Send mail  
         uses: dawidd6/action-send-mail@v3
         with:
