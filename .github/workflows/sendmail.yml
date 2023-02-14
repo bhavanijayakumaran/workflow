@@ -52,7 +52,7 @@ jobs:
               git fetch upstream
               git pull upstream main
               main_head=$(git rev-parse origin/main)
-              diff=$(git --no-pager diff --name-status --diff-filter=ACDMRT $main_head ${{ github.event.pull_request.merge_commit_sha }})
+              diff=$(git --no-pager diff --name-status --diff-filter=ACDMRT $main_head .. ${{ github.event.pull_request.merge_commit_sha }})
               echo "$diff"  
               echo 'DIFF<<EOF' >> $GITHUB_ENV
               echo "$diff" >> $GITHUB_ENV
