@@ -49,6 +49,10 @@ jobs:
               echo 'EOF' >> $GITHUB_ENV
 
 
+              show= $(git show $MERGE_SHA)
+              echo "$show"
+              log= $(git log -m -1 --name-status --pretty="format:" $MERGE_SHA )
+              echo "$log"
               diff=$(git show --name-status  $MERGE_SHA )
 
               echo "$diff"  
