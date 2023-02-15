@@ -58,7 +58,7 @@ jobs:
 
               head_sha=$(git show HEAD --format=%T | head -1)
               echo "$head_sha"
-              echo "COMPARE= $( echo '${{github.event.repository.html_url}}/compare/${{github.sha}}...$head_sha' )" >> $GITHUB_ENV
+              echo "COMPARE= $( echo '${{github.event.repository.html_url}}/compare/${{github.sha}}..."$head_sha"' )" >> $GITHUB_ENV
 
       - name: Send mail  
         uses: dawidd6/action-send-mail@v3
