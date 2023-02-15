@@ -47,13 +47,20 @@ jobs:
               echo 'MERGE<<EOF' >> $GITHUB_ENV
               echo "$merge_log" >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
-              git --no-pager diff --name-status HEAD
+            
+            
               diff=$(git --no-pager diff --name-status HEAD $(git merge-base HEAD main))
               echo "$diff" 
               echo 'DIFF<<EOF' >> $GITHUB_ENV
               echo "$diff" >> $GITHUB_ENV
-              echo 'EOF' >> $GITHUB_ENV                   
-      
+              echo 'EOF' >> $GITHUB_ENV  
+
+              h=$(git rev-list --ancestry-path branch..main | tail -1)
+              echo "$h"
+              head_sha=$(git log $h^)
+              echo "$head_sha"
+              echo "COMPARE= $( echo '${{github.event.repository.html_url}}/compare/${{github.sha}}...{{$head_sha}}' )" >> $GITHUB_ENV
+
       - name: Send mail  
         uses: dawidd6/action-send-mail@v3
         with:
@@ -80,7 +87,7 @@ jobs:
               Link: ${{github.event.pull_request._links.html.href}}              
               Log Message: 
                        ${{env.MERGE}} 
-              Compare: ${{env.COMPARE_URL}} 
+              Compare: ${{env.COMPARE}} 
               Diff: 
                        ${{env.DIFF}} 
                        ${{github.event.pull_request.diff_url}}
