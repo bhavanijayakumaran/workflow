@@ -37,6 +37,7 @@ jobs:
           fetch-depth: 0 
       # this step will (1) get the merge log for the merge_commit_sha and save it to the git  actions EN for later use in the email body. 
       # (2) Get the diff using the filter (Select only files that are Added (A), Copied (C), Deleted (D), Modified (M), Renamed (R), Transfered (T)) .  
+      # Git diff
       - name: Get merge log
         id: merge-log
         env:
